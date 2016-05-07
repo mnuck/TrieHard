@@ -3,7 +3,7 @@
 #ifndef __TRIENODE_H__
 #define __TRIENODE_H__
 
-#include <set>
+#include <vector>
 #include <map>
 
 template <typename Identifier, typename Variable>
@@ -16,7 +16,7 @@ public:
     }
   }
 
-  std::set<Identifier> _terminates;
+  std::vector<Identifier> _terminates;
   std::map<Variable, TrieNode*> _children;
 };
 

@@ -27,7 +27,7 @@ public:
       if (it == cursor->_children.end()) cursor->_children[v] = new NodeType;
       cursor = cursor->_children[v];
     }
-    cursor->_terminates.insert(id);
+    cursor->_terminates.push_back(id);
   }
 
   std::vector<Identifier> Superset(const std::vector<Variable>& data) {
@@ -40,7 +40,7 @@ public:
     for (const Variable& v : data) {
       auto it = cursor->_children.find(v);
       if (it == cursor->_children.end()) break;
-      cursor = cursor->_children[v];
+      cursor = it->second;
       result.insert(result.end(),
 		    cursor->_terminates.begin(),
 		    cursor->_terminates.end());
